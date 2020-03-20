@@ -7,7 +7,9 @@ import Counter from './index'
 */
 
 const setup = (props = {}, state= null) => {
-  return shallow(<Counter {...props}/>)
+  const wrapper = shallow(<Counter {...props}/>)
+  if (state) wrapper.setState(state)
+  return wrapper
 }
 
 const findByTestArray = (wrapper, val) => {
@@ -33,8 +35,27 @@ describe("Test for Counter", () => {
   })
 
   test("Counter start at 0", () => {
+    const initialStateCounter = wrapper.state('counter')
+    expect(initialStateCounter).toBe(0)
   })
 
   test("Clicking button increment counter displays", () => {
+    const counter = 7
+    const wrapper = setup(wrapper, { counter })
+    //find button and trigger event
+    const button = findByTestArray(wrapper, "increment-button")
+    button.simulate('click')
+    //find counter display
+    const counterDisplay = findByTestArray(wrapper, "counter-display")
+    expect(counterDisplay.text()).toContain(counter + 1)
+  })
+
+  test("Clicking ddecrement counter dusplay", () => {
+    const counter = 7
+    const wrapper = setup(wrapper, {counter})
+    const button = findByTestArray(wrapper, "decrement-button")
+    button.simulate("click")
+    const counterDisplay = findByTestArray(wrapper, "counter-display")
+    expect(counterDisplay.text()).toContain(counter - 1)
   })
 })
