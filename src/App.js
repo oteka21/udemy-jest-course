@@ -1,8 +1,14 @@
-import React from "react";
+import React, {Component} from "react";
+import Congrats from './jotto/congrats'
+import GuessedWords from './jotto/guessedWords'
 
-class App extends React.Component {
+class App extends Component {
   render() {
-    return <h1 className="title">Hola mundo!</h1>;
+    return (<div className="container">
+      <h1>Jotto</h1>
+      <Congrats success={true} />
+      <GuessedWords guessedWords={[{guessedWord: "train", letterMathCount:  4}]} />
+    </div>)
   }
 }
 
