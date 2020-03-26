@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server --mode development --ope",
+    "start": "webpack-dev-server --mode development --open",
     "test": "jest --watch",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
@@ -19,7 +19,10 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "react-redux": "7.2.0",
+    "redux": "4.0.5",
+    "redux-thunk": "2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
